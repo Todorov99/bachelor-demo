@@ -1,0 +1,34 @@
+version: '3.8'
+services:
+  influxdb:
+    image: todorov99/sensorapi-influx:1.0.0
+    container_name: "sensorapi-influx-bachelor"
+    ports: 
+      - '8086:8086'
+  postgredb:
+    image: todorov99/sensorapi-postgre:1.0.0
+    container_name: "sensorapi-postgre-bachelor"
+    ports:
+      - '5432:5432'
+  mailsender:
+    image: todorov99/mailsender:1.0.2
+    container_name: "mailsender-bachelor"
+    volumes:
+      - /Users/t.todorov/Develop/bachelor-demo/cfg/mailsender:/mailsender/cfg
+    environment:
+      - PORT=8083
+    ports:
+      - "8083:8083"
+  sensorapi:
+    image: todorov99/sensorapi:1.0.0
+    container_name: "sensorapi-bachelor"
+    volumes:
+      - /Users/t.todorov/Develop/bachelor-demo/cfg/sensorapi:/sensorapi/cfg
+    environment:
+      - PORT=8081
+    depends_on:
+      - 'influxdb'  
+      - 'postgredb'
+      - 'mailsender'
+    ports:
+      - '8081:8081'

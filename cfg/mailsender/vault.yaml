@@ -1,0 +1,3 @@
+- id: passwordSecret
+  name: <email>
+  value: <pass>
