@@ -1,0 +1,759 @@
+{
+	"info": {
+		"_postman_id": "a5989fed-53ea-4b5f-922b-bc574afdd8ac",
+		"name": "Bachelor Demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "sensorapi",
+			"item": [
+				{
+					"name": "users",
+					"item": [
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"kiro123\",\n    \"firstname\": \"Kiril\",\n    \"lastname\": \"Kirilov\",\n    \"email\": \"test@gmail.com\",\n    \"password\": \"Abcd123!@\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:8081/api/users/register",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"users",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer"
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"ttodorov\",\n    \"password\": \"Abcd123!@\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/users/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"users",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login Copy",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "kiro123",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "Abcd123!@",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:8081/api/users/login",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"users",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "measurement",
+					"item": [
+						{
+							"name": "GetMeasurementBetweenTimestamp",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJzZW5zb3IiLCJlbWFpbCI6InRvZG9yLm10b2Rvcm92MDFAZ21haWwuY29tIiwiZXhwIjoxNjUxODQ4MTkxLCJpZCI6MSwiaXNzdWVyIjoiaHR0cHM6Ly90dG9kb3Jvdi5jb20iLCJuYW1lIjoiVG9kb3IiLCJ1c2VybmFtZSI6InR0b2Rvcm92In0.9A8qlvMZFfJW0EQ7Yu1gFJ3zBHqNu_C33o6AJOzdWm4",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:8081/api/measurement?startTime=2022-05-06-13:43:58&EndTime=2022-05-06-13:44:15&deviceID=2&sensorID=1",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"measurement"
+									],
+									"query": [
+										{
+											"key": "startTime",
+											"value": "2022-05-06-13:43:58"
+										},
+										{
+											"key": "EndTime",
+											"value": "2022-05-06-13:44:15"
+										},
+										{
+											"key": "deviceID",
+											"value": "2"
+										},
+										{
+											"key": "sensorID",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add measurement - used by the CLI",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJzZW5zb3IiLCJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiZXhwIjoxNjUxNDM0ODYyLCJpZCI6MiwiaXNzdWVyIjoiaHR0cHM6Ly90dG9kb3Jvdi5jb20iLCJuYW1lIjoiS2lyaWwiLCJ1c2VybmFtZSI6Imtpcm8xMjMifQ.XJyqVP_1R9LPW6-rT-j121_Ne4xL_m11l5np6iSBBVw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"measuredAt\": \"2022-04-21-14:55:18\",\n    \"value\": \"33\",\n    \"sensorId\": \"5\",\n    \"deviceId\": \"3\",\n    \"metricValueCfg\": {\n        \"tempMaxValue\": \"70\",\n        \"usageMaxValue\": \"5.5\",\n        \"memAvailableMaxValue\": \"2.9\",\n        \"memUsedMaxValue\": \"9999999999\",\n        \"memUsedPercent\": \"90\",\n        \"cpuFrequencyMaxValue\": \"55\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:8081/api/measurement",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"measurement"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Average value of measurements",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJzZW5zb3IiLCJlbWFpbCI6InRvZG9yLm10b2Rvcm92MDFAZ21haWwuY29tIiwiZXhwIjoxNjUxMzI0OTM2LCJpZCI6MSwiaXNzdWVyIjoiaHR0cHM6Ly90dG9kb3Jvdi5jb20iLCJuYW1lIjoiVG9kb3IiLCJ1c2VybmFtZSI6InR0b2Rvcm92In0.Lw_508F3OIX6kdEAm8ZZyCZxiCr5lDsrRub6FBQrgsI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:8081/api/measurement/average?deviceId=1&sensorId=2&startTime=2022-04-30-15:21:46&endTime=2022-04-30-15:23:46",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"measurement",
+										"average"
+									],
+									"query": [
+										{
+											"key": "deviceId",
+											"value": "1"
+										},
+										{
+											"key": "sensorId",
+											"value": "2"
+										},
+										{
+											"key": "startTime",
+											"value": "2022-04-30-15:21:46"
+										},
+										{
+											"key": "endTime",
+											"value": "2022-04-30-15:23:46"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Measurement correlation coeficient",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJzZW5zb3IiLCJlbWFpbCI6InRvZG9yLm10b2Rvcm92MDFAZ21haWwuY29tIiwiZXhwIjoxNjUxMzI0OTM2LCJpZCI6MSwiaXNzdWVyIjoiaHR0cHM6Ly90dG9kb3Jvdi5jb20iLCJuYW1lIjoiVG9kb3IiLCJ1c2VybmFtZSI6InR0b2Rvcm92In0.Lw_508F3OIX6kdEAm8ZZyCZxiCr5lDsrRub6FBQrgsI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:8081/api/measurement/correlation?deviceId1=1&deviceId2=1&sensorId1=4&sensorId2=8&startTime=2022-04-30-15:21:46&endTime=2022-04-30-15:23:46",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"measurement",
+										"correlation"
+									],
+									"query": [
+										{
+											"key": "deviceId1",
+											"value": "1"
+										},
+										{
+											"key": "deviceId2",
+											"value": "1"
+										},
+										{
+											"key": "sensorId1",
+											"value": "4"
+										},
+										{
+											"key": "sensorId2",
+											"value": "8"
+										},
+										{
+											"key": "startTime",
+											"value": "2022-04-30-15:21:46"
+										},
+										{
+											"key": "endTime",
+											"value": "2022-04-30-15:23:46"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Start monitor",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJzZW5zb3IiLCJlbWFpbCI6InRvZG9yLm10b2Rvcm92MDFAZ21haWwuY29tIiwiZXhwIjoxNjUxODQ4MTkxLCJpZCI6MSwiaXNzdWVyIjoiaHR0cHM6Ly90dG9kb3Jvdi5jb20iLCJuYW1lIjoiVG9kb3IiLCJ1c2VybmFtZSI6InR0b2Rvcm92In0.9A8qlvMZFfJW0EQ7Yu1gFJ3zBHqNu_C33o6AJOzdWm4",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"duration\": \"15s\",\n    \"deltaDuration\": \"5s\",\n    \"deviceID\": 1,\n    \"generateReport\": true,\n    \"sendReport\": true,\n    \"sensorGroups\": {\n        \"CPU_TEMP\": \"thermal\",\n        \"CPU_USAGE\": \"\",\n        \"MEMORY_USAGE\": \"\"\n    },\n    \"metricValueCfg\": {\n        \"tempMaxValue\": \"70\",\n        \"usageMaxValue\": \"5.5\",\n        \"memAvailableMaxValue\": \"2.9\",\n        \"memUsedMaxValue\": \"9999999999\",\n        \"memUsedPercent\": \"90\",\n        \"cpuFrequencyMaxValue\": \"55\"\n    }\n\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:8081/api/measurement/collect",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"measurement",
+										"collect"
+									],
+									"query": [
+										{
+											"key": "duration",
+											"value": "15s",
+											"disabled": true
+										},
+										{
+											"key": "tempSysFile",
+											"value": "thermal",
+											"disabled": true
+										},
+										{
+											"key": "deviceID",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "deltaDuration",
+											"value": "5s",
+											"disabled": true
+										},
+										{
+											"key": "generateReport",
+											"value": "true",
+											"disabled": true
+										},
+										{
+											"key": "sendReport",
+											"value": "true",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Monitor status",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJzZW5zb3IiLCJlbWFpbCI6InRvZG9yLm10b2Rvcm92MDFAZ21haWwuY29tIiwiZXhwIjoxNjUxODQ4MTkxLCJpZCI6MSwiaXNzdWVyIjoiaHR0cHM6Ly90dG9kb3Jvdi5jb20iLCJuYW1lIjoiVG9kb3IiLCJ1c2VybmFtZSI6InR0b2Rvcm92In0.9A8qlvMZFfJW0EQ7Yu1gFJ3zBHqNu_C33o6AJOzdWm4",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:8081/api/measurement/monitor/status/1",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"measurement",
+										"monitor",
+										"status",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get report file",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJzZW5zb3IiLCJlbWFpbCI6InR0b2Rvcm92QGdtYWlsLmNvbSIsImV4cCI6MTY0OTYyNDQ0NiwiaXNzdWVyIjoiaHR0cHM6Ly90dG9kb3Jvdi5jb20iLCJuYW1lIjoiVG9kb3IifQ.jhSJS-TVQoBEO_rsuQjiAerrBmLnC8QaX3z2VOG0cPQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:8081/api/measurement/monitor/report?reportFilename=measurement_2022-04-10-20:20:34.xlsx",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"measurement",
+										"monitor",
+										"report"
+									],
+									"query": [
+										{
+											"key": "reportFilename",
+											"value": "measurement_2022-04-10-20:20:34.xlsx"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "device",
+					"item": [
+						{
+							"name": "GetAllDevices",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NDc3MTI2NTcsInVzZXJfaWQiOjR9.HHypV0SOBk3T8jiCvDOcmwvXrfUIBkZefxPGgYVWNDo",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/api/device/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"device",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetDeviceById",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJzZW5zb3IiLCJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiZXhwIjoxNjUxNDM0ODYyLCJpZCI6MiwiaXNzdWVyIjoiaHR0cHM6Ly90dG9kb3Jvdi5jb20iLCJuYW1lIjoiS2lyaWwiLCJ1c2VybmFtZSI6Imtpcm8xMjMifQ.XJyqVP_1R9LPW6-rT-j121_Ne4xL_m11l5np6iSBBVw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:8081/api/device/3",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"device",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteDevice",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJzZW5zb3IiLCJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiZXhwIjoxNjUxMzI4NTczLCJpZCI6MiwiaXNzdWVyIjoiaHR0cHM6Ly90dG9kb3Jvdi5jb20iLCJuYW1lIjoiS2lyaWwiLCJ1c2VybmFtZSI6Imtpcm8xMjMifQ.mAhT4hDY0I5MkK7EsaDgv88aWPR4nh9BYgDAD2vojMM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:8081/api/device/2",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"device",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateDevice",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJzZW5zb3IiLCJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiZXhwIjoxNjUwNTQ3MTIyLCJpZCI6MywiaXNzdWVyIjoiaHR0cHM6Ly90dG9kb3Jvdi5jb20iLCJuYW1lIjoiS2lyaWwiLCJ1c2VybmFtZSI6Imtpcm8xMjMifQ.IFwS6D1M252stLEsrqxPGMItPyulYj7vQQqnY7hc4Ig",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test device\",\n    \"description\": \"Update on new user\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:8081/api/device/3",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"device",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AddDevice",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJzZW5zb3IiLCJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiZXhwIjoxNjUxNDM0ODYyLCJpZCI6MiwiaXNzdWVyIjoiaHR0cHM6Ly90dG9kb3Jvdi5jb20iLCJuYW1lIjoiS2lyaWwiLCJ1c2VybmFtZSI6Imtpcm8xMjMifQ.XJyqVP_1R9LPW6-rT-j121_Ne4xL_m11l5np6iSBBVw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test device12\",\n    \"description\": \"Testing description\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:8081/api/device/add",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"device",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Generate device config",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJzZW5zb3IiLCJlbWFpbCI6InRvZG9yLm10b2Rvcm92MDFAZ21haWwuY29tIiwiZXhwIjoxNjUxNTI3OTU0LCJpZCI6MSwiaXNzdWVyIjoiaHR0cHM6Ly90dG9kb3Jvdi5jb20iLCJuYW1lIjoiVG9kb3IiLCJ1c2VybmFtZSI6InR0b2Rvcm92In0.TOIcjejL_aMabgR-Q8jX3NFfdn-fYe3AoaUbGzbKwGU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:8081/api/device/generate/config/1?OS=darwin",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"device",
+										"generate",
+										"config",
+										"1"
+									],
+									"query": [
+										{
+											"key": "OS",
+											"value": "darwin"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "sensor",
+					"item": [
+						{
+							"name": "GetAllSensors",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJzZW5zb3IiLCJlbWFpbCI6InRvZG9yLm10b2Rvcm92MDFAZ21haWwuY29tIiwiZXhwIjoxNjUxNTE2MDczLCJpZCI6MSwiaXNzdWVyIjoiaHR0cHM6Ly90dG9kb3Jvdi5jb20iLCJuYW1lIjoiVG9kb3IiLCJ1c2VybmFtZSI6InR0b2Rvcm92In0.gIUGy_4iF2bf_KeGp78uafj1NmDaf3q4QrDIXG8GRhQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:8081/api/sensor/all",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"sensor",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetSensorByID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJzZW5zb3IiLCJlbWFpbCI6InRvZG9yLm10b2Rvcm92MDFAZ21haWwuY29tIiwiZXhwIjoxNjUwNTQzOTg5LCJpZCI6MSwiaXNzdWVyIjoiaHR0cHM6Ly90dG9kb3Jvdi5jb20iLCJuYW1lIjoiVG9kb3IiLCJ1c2VybmFtZSI6InR0b2Rvcm92In0._h7CQF6zdtUA0dO5bzVcO-pQ6rNXYKFF0qB_eSxfpx8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:8081/api/sensor/2",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"sensor",
+										"2"
+									]
+								},
+								"description": "The sensor ID is passed as path variable to the request."
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
